@@ -13,17 +13,31 @@ int main() {
     double ias;	
     double weight;
     // Calculer et afficher les données suivantes :
-    double headwind;	
-    double pressure_altitude;	
-    double tas;	
-    double ground_speed;	
-    double range;	
-    double takeoff;	
-    double wing_loading;	
-    double rate_of_climb;
-    double no_return;	
-    double descent_speed;
+    double headwind;
+    double pressure_altitude 1;	
+    double tas 2;	
+    double ground_speed 3;	
+    double range 4;	
+    double takeoff 5;	
+    double wing_loading 6;	
+    double rate_of_climb 7;
+    double no_return 8;	
+    double descent_speed 9;
+
+    bool headwind;
+    bool pressure_altitude=1;	
+    bool tas=2;	
+    bool ground_speed=3;	
+    bool range=4;	
+    bool takeoff=5;	
+    bool wing_loading=6;	
+    bool rate_of_climb=7;
+    bool no_return=8;	
+    bool descent_speed=9;
     
+    
+
+
     printf("Direction relative du vent [-3,14159265 à 3,14159265] : ");
     scanf("%lf", & wind_angle); 
 
@@ -54,7 +68,8 @@ int main() {
     printf("weight [500 à 600000] : ");
     scanf("%lf", & weight );
 
-    headwind=wind_speed*cos(wind_angle);
+    if
+    (headwind=wind_speed*cos(wind_angle);
     pressure_altitude=altitude+(1023-pressure)*30;
     tas=ias*(1+2*pressure_altitude/1000);
     ground_speed=tas - headwind;
@@ -63,7 +78,16 @@ int main() {
     wing_loading=weight/wing_surface;
     rate_of_climb=	700*(1-pressure_altitude/10000)*(1-0.01*max(0,temperature-15));
     no_return=range/2;
-    descent_speed=ground_speed*tan(3);
+    descent_speed=ground_speed*tan(3));
+    {
+        printf("le choix concerne cette donnée : à calculer ou, nécessaire au calcul\n");
+    }
+    else
+    {
+        printf("le choix ne concerne pas cette donnée : à calculer ou, nécessaire au calcul\n");
+    }
+
+
 
     return 0;
 
