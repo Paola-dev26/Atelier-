@@ -59,9 +59,9 @@ int main() {
     tas=ias*(1+2*pressure_altitude/1000);
     ground_speed=tas - headwind;
     range=	fuel*ground_speed*1.852/consumption;
-    takeoff=300*(1+pressure_altitude/1000)*(1-0.01*max(0, temperature-15))*(1-headwind/ground_speed)*(weight/1157)² ;
+    takeoff=300*(1+pressure_altitude/1000)*(1-0.01*MAX(0, temperature-15))*(1-headwind/ground_speed)*(weight/1157)²;
     wing_loading=weight/wing_surface;
-    rate_of_climb=700*(1-pressure_altitude/10000)*(1-0.01*(0,temperature-15));
+    rate_of_climb=	700*(1-pressure_altitude/10000)*(1-0.01*max(0,temperature-15));
     no_return=range/2;
     descent_speed=ground_speed*tan(3);
 
