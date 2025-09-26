@@ -37,7 +37,7 @@ int main() {
     printf("altitude [0	à 19500] : ");
     scanf("%lf", & altitude);
 
-    printf(" ias [0	à 500] :");
+    printf(" ias [0	à 500] : ");
     scanf("%lf", &  ias);
 
     printf("weight [500 à 600000] : ");
