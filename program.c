@@ -80,11 +80,11 @@ int main() {
     no_return=range/2;
     descent_speed=ground_speed*tan(3));
     {
-        printf("le choix concerne cette donnée : à calculer ou, nécessaire au calcul\n");
-    }
+        printf("true\n");
+    }l
     else
     {
-        printf("le choix ne concerne pas cette donnée : à calculer ou, nécessaire au calcul\n");
+        printf("false\n");
     }
 
 
