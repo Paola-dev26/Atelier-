@@ -21,6 +21,7 @@ int main() {
     scanf("%lf", & fuel);
 
     printf("consumption [10 à 15000] : ");
+    scanf("%lf", & consumption);
 
 
     return 0;
