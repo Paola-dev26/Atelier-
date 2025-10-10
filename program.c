@@ -61,10 +61,10 @@ int main(void) {
     bool no_return = false;
     bool descent_speed = false;
 
-    if (choix == 1 || choix == 2) pressure_altitude = true;
-    if (choix == 2) tas = true;
-    if (choix == 3) ground_speed = true;
-    if (choix == 4) range = true;
+    if (choix == 1 || choix == 2 || choix == 5 || choix == 7) pressure_altitude = true;
+    if (choix == 2 || choix == 3 ) tas = true;
+    if (choix == 3 || choix == 4 || choix == 5 || choix == 9 ) ground_speed = true;
+    if (choix == 4 || choix == 8) range = true;
     if (choix == 5) takeoff = true;
     if (choix == 6) wing_loading = true;
     if (choix == 7) rate_of_climb = true;
@@ -166,7 +166,7 @@ int main(void) {
     tas=ias*(1+2*pressure_altitude/1000);
     ground_speed=tas - headwind;
     range=	fuel*ground_speed*1.852/consumption;
-    takeoff=300*(1+pressure_altitude/1000)*(1-0.01*max(0, temperature-15))*(1-headwind/ground_speed)*(weight/1157)²;
+    takeoff=300*(1+pressure_altitude/1000)*(1-0.01*max(0, temperature-15))*(1-headwind/ground_speed)*(weight/1157)*(weight/1157);
     wing_loading=weight/wing_surface;
     rate_of_climb=700*(1-pressure_altitude/10000)*(1-0.01*max(0,temperature-15));
     no_return=range/2;
