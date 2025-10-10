@@ -76,52 +76,43 @@ int main(void) {
    {
     printf("consumption [10 à 15000] : ");
     scanf("%lf", & consumption);
-   } while (condition);
+   } while (consumption < 10 || consumption > 15000);
 
    do
    {
    printf("wing_surface [5 à 900] : ");
    scanf("%lf", & wing_surface);
-   } while (condition);
+   } while (wing_surface < 5 || wing_surface > 900);
    
     do
     {
     printf("pressure [300 à	1050] : ");
     scanf("%lf", & pressure);
-    } while (condition);
+    } while (pressure < 300 || pressure > 1050);
       
     do
     {
     printf("temperature [-50 à 50] : ");
     scanf("%lf", & temperature);
-    } while (condition);
+    } while (temperature < -50 || temperature > 50);
     
     do
     {
        printf("altitude [0	à 19500] : ");
     scanf("%lf", & altitude);
-    } while (condition);
+    } while (altitude < 0 || altitude > 19500);
     
     do
     {
        printf(" ias [0	à 500] : ");
     scanf("%lf", &  ias);
-    } while (condition);
+    } while (ias < 0 || ias > 500);
     
     do
     {
     printf("weight [500 à 600000] : ");
     scanf("%lf", & weight );
-    } while (condition);
-    
-    
-
-    
-
-  
-
-    printf("weight [500 à 600000] : ");
-    scanf("%lf", & weight );
+    } while (weight < 500 || weight > 600000);
     
     if
     headwind=wind_speed*cos(wind_angle);
