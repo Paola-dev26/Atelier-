@@ -39,7 +39,16 @@ int main(void) {
     
     int choix;
      scanf("%d", &choix);
-    bool pressure = false;
+    bool wind_angle= false;	
+    bool wind_speed= false;
+    bool fuel= false;	
+    bool consumption= false;	
+    bool wing_surface= false;	
+    bool pressure= false;	
+    bool temperature= false;	
+    bool altitude= false;	
+    bool ias= false;	
+    bool weight= false;
 
     bool headwind = false;
     bool pressure_altitude = false;
