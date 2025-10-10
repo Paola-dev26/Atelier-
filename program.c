@@ -53,7 +53,23 @@ int main(void) {
         printf("Choix invalide.\n");
         return 0;
     }
+     // === DÉPENDANCES ===
+    if (ground_speed || range || takeoff || descent_speed) {
+        headwind = true;
+        tas = true;
+    }
+    if (tas || rate_of_climb || takeoff)
+        pressure_altitude = true;
+    if (no_return)
+        range = true;
+
+    // === VARIABLES ===
+    double wind_angle=0, wind_speed=0, fuel=0, consumption=0;
+    double wing_surface=0, pressure=0, temperature=0, altitude=0;
+    double ias=0, weight=0;
     
+    // === SAISIES AVEC BORNES ===
+     if (headwind) {
     do
     {
     printf("Direction relative du vent [-3,14159265 à 3,14159265] : ");
@@ -65,7 +81,32 @@ int main(void) {
     printf("Vitesse vent [0 à 150] : ");
     scanf("%lf", & wind_speed);
     } while (wind_speed < 0 || wind_speed > 150);
-
+    }
+    
+     if (pressure_altitude) {
+    do
+    {
+       printf("altitude [0	à 19500] : ");
+    scanf("%lf", & altitude);
+    } while (altitude < 0 || altitude > 19500);
+    
+    do
+    {
+    printf("pressure [300 à	1050] : ");
+    scanf("%lf", & pressure);
+    } while (pressure < 300 || pressure > 1050);
+    }
+    
+     if (tas) {
+    do
+    {
+       printf(" ias [0	à 500] : ");
+    scanf("%lf", &  ias);
+    } while (ias < 0 || ias > 500);
+}
+    
+     if (range || no_return) {
+    
     do
     {
     printf("fuel [20 à 350000] : ");
@@ -77,42 +118,31 @@ int main(void) {
     printf("consumption [10 à 15000] : ");
     scanf("%lf", & consumption);
    } while (consumption < 10 || consumption > 15000);
-
-   do
-   {
-   printf("wing_surface [5 à 900] : ");
-   scanf("%lf", & wing_surface);
-   } while (wing_surface < 5 || wing_surface > 900);
-   
-    do
-    {
-    printf("pressure [300 à	1050] : ");
-    scanf("%lf", & pressure);
-    } while (pressure < 300 || pressure > 1050);
-      
-    do
-    {
-    printf("temperature [-50 à 50] : ");
-    scanf("%lf", & temperature);
-    } while (temperature < -50 || temperature > 50);
-    
-    do
-    {
-       printf("altitude [0	à 19500] : ");
-    scanf("%lf", & altitude);
-    } while (altitude < 0 || altitude > 19500);
-    
-    do
-    {
-       printf(" ias [0	à 500] : ");
-    scanf("%lf", &  ias);
-    } while (ias < 0 || ias > 500);
+}
+     if (takeoff || wing_loading) {
     
     do
     {
     printf("weight [500 à 600000] : ");
     scanf("%lf", & weight );
     } while (weight < 500 || weight > 600000);
+}
+   if (wing_loading) {
+   do
+   {
+   printf("wing_surface [5 à 900] : ");
+   scanf("%lf", & wing_surface);
+   } while (wing_surface < 5 || wing_surface > 900);
+}
+   
+   if (takeoff || rate_of_climb) {
+    do
+    {
+    printf("temperature [-50 à 50] : ");
+    scanf("%lf", & temperature);
+    } while (temperature < -50 || temperature > 50);
+}
+    
     
     if
     headwind=wind_speed*cos(wind_angle);
