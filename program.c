@@ -13,6 +13,17 @@ int main(void) {
     double altitude;	
     double ias;	
     double weight;
+
+    double headwind;	
+    double pressure_altitude;	
+    double tas;	
+    double ground_speed;	
+    double range;	
+    double takeoff;	
+    double wing_loading;	
+    double rate_of_climb;
+    double no_return;	
+    double descent_speed;
     // Calculer et afficher les données suivantes :
     printf("Choisissez la valeur a calculer :\n");
     printf("1) Altitude-pression\n");
@@ -28,7 +39,8 @@ int main(void) {
     
     int choix;
      scanf("%d", &choix);
-    
+    bool pressure = false;
+
     bool headwind = false;
     bool pressure_altitude = false;
     bool tas = false;
@@ -40,15 +52,15 @@ int main(void) {
     bool no_return = false;
     bool descent_speed = false;
 
-         if (choix == 1) pressure_altitude = true;
-    else if (choix == 2) tas = true;
-    else if (choix == 3) ground_speed = true;
-    else if (choix == 4) range = true;
-    else if (choix == 5) takeoff = true;
-    else if (choix == 6) wing_loading = true;
-    else if (choix == 7) rate_of_climb = true;
-    else if (choix == 8) no_return = true;
-    else if (choix == 9) descent_speed = true;
+    if (choix == 1 || choix == 2) pressure_altitude = true;
+    if (choix == 2) tas = true;
+    if (choix == 3) ground_speed = true;
+    if (choix == 4) range = true;
+    if (choix == 5) takeoff = true;
+    if (choix == 6) wing_loading = true;
+    if (choix == 7) rate_of_climb = true;
+    if (choix == 8) no_return = true;
+    if (choix == 9) descent_speed = true;
     else {
         printf("Choix invalide.\n");
         return 0;
@@ -62,11 +74,6 @@ int main(void) {
         pressure_altitude = true;
     if (no_return)
         range = true;
-
-    // === VARIABLES ===
-    double wind_angle=0, wind_speed=0, fuel=0, consumption=0;
-    double wing_surface=0, pressure=0, temperature=0, altitude=0;
-    double ias=0, weight=0;
     
     // === SAISIES AVEC BORNES ===
      if (headwind) {
