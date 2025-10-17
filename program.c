@@ -162,6 +162,7 @@ int main(void) {
     
 // === Affichage du résultat ===   
 if (choix == 1) {
+    pressure_altitude= altitude+(1023-pressure)*30
     printf("Altitude pression = %.2f\n", pressure_altitude);
 }
 else if (choix == 2) {
