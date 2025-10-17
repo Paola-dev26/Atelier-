@@ -40,27 +40,27 @@ int main(void) {
     int choix;
      scanf("%d", &choix);
     
-    bool wind_angle = false;	
-    bool wind_speed = false;
-    bool fuel = false;	
-    bool consumption = false;	
-    bool wing_surface = false;	
-    bool pressure = false;	
-    bool temperature = false;	
-    bool altitude = false;	
-    bool ias = false;	
-    bool weight = false;
+    bool b_wind_angle = false;	
+    bool b_wind_speed = false;
+    bool b_fuel = false;	
+    bool b_consumption = false;	
+    bool b_wing_surface = false;	
+    bool b_pressure = false;	
+    bool b_temperature = false;	
+    bool b_altitude = false;	
+    bool b_ias = false;	
+    bool b_weight = false;
 
-    bool headwind = false;
-    bool pressure_altitude = false;
-    bool tas = false;
-    bool ground_speed = false;
-    bool range = false;
-    bool takeoff = false;
-    bool wing_loading = false;
-    bool rate_of_climb = false;
-    bool no_return = false;
-    bool descent_speed = false;
+    bool b_headwind = false;
+    bool b_pressure_altitude = false;
+    bool b_tas = false;
+    bool b_ground_speed = false;
+    bool b_range = false;
+    bool b_takeoff = false;
+    bool b_wing_loading = false;
+    bool b_rate_of_climb = false;
+    bool b_no_return = false;
+    bool b_descent_speed = false;
 
     if (choix == 1 || choix == 2 || choix == 5 || choix == 7) pressure_altitude = true;
     if (choix == 2 || choix == 3 ) tas = true;
@@ -76,14 +76,14 @@ int main(void) {
         return 0;
     }
      // === DÉPENDANCES ===
-    if (ground_speed || range || takeoff || descent_speed) {
-        headwind = true;
+    if (b_ground_speed || b_range || b_takeoff || b_descent_speed) {
+        b_headwind = true;
         tas = true;
     }
-    if (tas || rate_of_climb || takeoff)
-        pressure_altitude = true;
-    if (no_return)
-        range = true;
+    if (b_tas || b_rate_of_climb || b_takeoff)
+        b_pressure_altitude = true;
+    if (b_no_return)
+        b_range = true;
     
     // === SAISIES AVEC BORNES ===
      if (headwind) {
@@ -161,7 +161,7 @@ int main(void) {
 }
     
     
-    if
+{   if ()
     headwind=wind_speed*cos(wind_angle);
     pressure_altitude=altitude+(1023-pressure)*30;
     tas=ias*(1+2*pressure_altitude/1000);
@@ -172,13 +172,8 @@ int main(void) {
     rate_of_climb=700*(1-pressure_altitude/10000)*(1-0.01*max(0,temperature-15));
     no_return=range/2;
     descent_speed=ground_speed*tan(3);
-    {
-        printf("true\n");
-    }l
-    else
-    {
-        printf("false\n");
     }
+    
 
 
 
