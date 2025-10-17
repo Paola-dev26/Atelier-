@@ -62,15 +62,15 @@ int main(void) {
     bool b_no_return = false;
     bool b_descent_speed = false;
 
-    if (choix == 1 || choix == 2 || choix == 5 || choix == 7) pressure_altitude = true;
-    if (choix == 2 || choix == 3 ) tas = true;
-    if (choix == 3 || choix == 4 || choix == 5 || choix == 9 ) ground_speed = true;
-    if (choix == 4 || choix == 8) range = true;
-    if (choix == 5) takeoff = true;
-    if (choix == 6) wing_loading = true;
-    if (choix == 7) rate_of_climb = true;
-    if (choix == 8) no_return = true;
-    if (choix == 9) descent_speed = true;
+    if (choix == 1 || choix == 2 || choix == 5 || choix == 7) b_pressure_altitude = true;
+    if (choix == 2 || choix == 3 ) b_tas = true;
+    if (choix == 3 || choix == 4 || choix == 5 || choix == 9 ) b_ground_speed = true;
+    if (choix == 4 || choix == 8) b_range = true;
+    if (choix == 5) b_takeoff = true;
+    if (choix == 6) b_wing_loading = true;
+    if (choix == 7) b_rate_of_climb = true;
+    if (choix == 8) b_no_return = true;
+    if (choix == 9) b_descent_speed = true;
     else {
         printf("Choix invalide.\n");
         return 0;
@@ -86,7 +86,7 @@ int main(void) {
         b_range = true;
     
     // === SAISIES AVEC BORNES ===
-     if (headwind) {
+     if (b_headwind) {
     do
     {
     printf("Direction relative du vent [-3,14159265 à 3,14159265] : ");
@@ -100,7 +100,7 @@ int main(void) {
     } while (wind_speed < 0 || wind_speed > 150);
     }
     
-     if (pressure_altitude) {
+     if (b_pressure_altitude) {
     do
     {
        printf("altitude [0	à 19500] : ");
@@ -122,7 +122,7 @@ int main(void) {
     } while (ias < 0 || ias > 500);
 }
     
-     if (range || no_return) {
+     if (b_altitude || b_no_return) {
     
     do
     {
@@ -136,7 +136,7 @@ int main(void) {
     scanf("%lf", & consumption);
    } while (consumption < 10 || consumption > 15000);
 }
-     if (takeoff || wing_loading) {
+     if (b_takeoff || b_wing_loading) {
     
     do
     {
@@ -144,7 +144,7 @@ int main(void) {
     scanf("%lf", & weight );
     } while (weight < 500 || weight > 600000);
 }
-   if (wing_loading) {
+   if (b_wing_loading) {
    do
    {
    printf("wing_surface [5 à 900] : ");
@@ -152,7 +152,7 @@ int main(void) {
    } while (wing_surface < 5 || wing_surface > 900);
 }
    
-   if (takeoff || rate_of_climb) {
+   if (b_takeoff || b_rate_of_climb) {
     do
     {
     printf("temperature [-50 à 50] : ");
@@ -160,24 +160,38 @@ int main(void) {
     } while (temperature < -50 || temperature > 50);
 }
     
-    
-{   if ()
-    headwind=wind_speed*cos(wind_angle);
-    pressure_altitude=altitude+(1023-pressure)*30;
-    tas=ias*(1+2*pressure_altitude/1000);
-    ground_speed=tas - headwind;
-    range=	fuel*ground_speed*1.852/consumption;
-    takeoff=300*(1+pressure_altitude/1000)*(1-0.01*max(0, temperature-15))*(1-headwind/ground_speed)*(weight/1157)*(weight/1157);
-    wing_loading=weight/wing_surface;
-    rate_of_climb=700*(1-pressure_altitude/10000)*(1-0.01*max(0,temperature-15));
-    no_return=range/2;
-    descent_speed=ground_speed*tan(3);
-    }
-    
-
-
-
-    return 0;
+// === Affichage du résultat ===   
+if (choix == 1) {
+    printf("Altitude pression = %.2f\n", pressure_altitude);
+}
+else if (choix == 2) {
+    printf("TAS = %.2f\n", tas);
+}
+else if (choix == 3) {
+    printf("Vitesse sol = %.2f\n", ground_speed);
+}
+else if (choix == 4) {
+    printf("Distance franchissable = %.2f\n", range);
+}
+else if (choix == 5) {
+    printf("Distance de décollage = %.2f\n", takeoff);
+}
+else if (choix == 6) {
+    printf("Charge alaire = %.2f\n", wing_loading);
+}
+else if (choix == 7) {
+    printf("Taux de montée = %.2f\n", rate_of_climb);
+}
+else if (choix == 8) {
+    printf("Point de non-retour = %.2f\n", no_return);
+}
+else if (choix == 9) {
+    printf("Vitesse de descente = %.2f\n", descent_speed);
+}
+else {
+    printf("Choix invalide.\n");
+}
+   return 0;
 
 
 }
