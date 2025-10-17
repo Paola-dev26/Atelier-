@@ -114,7 +114,7 @@ int main(void) {
     } while (pressure < 300 || pressure > 1050);
     }
     
-     if (tas) {
+     if (b_tas) {
     do
     {
        printf(" ias [0	à 500] : ");
@@ -162,31 +162,39 @@ int main(void) {
     
 // === Affichage du résultat ===   
 if (choix == 1) {
-    pressure_altitude= altitude+(1023-pressure)*30
+    pressure_altitude = altitude+(1023-pressure)*30;
     printf("Altitude pression = %.2f\n", pressure_altitude);
 }
 else if (choix == 2) {
+    tas = ias*(1+2*pressure_altitude/1000);
     printf("TAS = %.2f\n", tas);
 }
 else if (choix == 3) {
+    ground_speed = 	tas - headwind;
     printf("Vitesse sol = %.2f\n", ground_speed);
 }
 else if (choix == 4) {
+    range = fuel*ground_speed*1.852/consumption;
     printf("Distance franchissable = %.2f\n", range);
 }
 else if (choix == 5) {
+    takeoff = 	300*(1+pressure_altitude/1000)*(1-0.01*fmax(0, temperature-15))*(1-headwind/ground_speed)*(weight/1157)*(weight/1157);
     printf("Distance de décollage = %.2f\n", takeoff);
 }
 else if (choix == 6) {
+    wing_loading = weight/wing_surface;
     printf("Charge alaire = %.2f\n", wing_loading);
 }
 else if (choix == 7) {
+    rate_of_climb = 700*(1-pressure_altitude/10000)*(1-0.01*fmax(0,temperature-15));
     printf("Taux de montée = %.2f\n", rate_of_climb);
 }
 else if (choix == 8) {
+    no_return = range/2;
     printf("Point de non-retour = %.2f\n", no_return);
 }
 else if (choix == 9) {
+    descent_speed = ground_speed*tan(3);
     printf("Vitesse de descente = %.2f\n", descent_speed);
 }
 else {
